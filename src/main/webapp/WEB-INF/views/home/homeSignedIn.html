@@ -31,13 +31,13 @@
 </div>
 <div class="container">
     <!--/* Handle the flash task */-->
-    <th:block th:if="${message != null}" th:fragment="content">>
+    <th:block th:if="${message != null}">
         <!--/* The message code is returned from the @Controller */-->
-       	<div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=${message.message})"></div>
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
     <p>
         Hello <span th:text="${#authentication.name}">User</span>!
-        Welcome to the Spring MVC Quickstart application!
+        Welcome to the ProjectAffogato application!
 
     </p>
     <div th:replace="fragments/footer :: ${#authentication.principal.isAdmin()} ? 'footer-admin' : 'footer'">&copy; Static Footer</div>
